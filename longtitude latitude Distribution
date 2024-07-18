@@ -1,0 +1,7 @@
+plt.figure(figsize=(12, 8))
+sns.scatterplot(x='Longitude', y='Latitude', data=crash_data, hue='Degree of crash', palette='viridis', alpha=0.7)
+plt.title('longtitude latitude distribution')
+plt.xlabel('longtitude')
+plt.ylabel('latitude')
+plt.legend(title='Degree of Crash')
+plt.show()
