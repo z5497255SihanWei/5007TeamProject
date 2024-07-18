@@ -1,0 +1,38 @@
+# Data cleaning and transformation
+# Keeping relevant columns
+df = df[['Degree of crash', 'Month of crash', 'Day of week of crash', 'Two-hour intervals']]
+
+# Standardizing the time-related columns
+df['Two-hour intervals'] = df['Two-hour intervals'].str[:5]
+# Creating pivot tables to aggregate crash data by time variables
+pivot_table_time = df.pivot_table(
+    index=['Two-hour intervals'],
+    columns=['Degree of crash'],
+    aggfunc='size',
+    fill_value=0
+)
+
+pivot_table_day = df.pivot_table(
+    index=['Day of week of crash'],
+    columns=['Degree of crash'],
+    aggfunc='size',
+    fill_value=0
+)
+
+pivot_table_month = df.pivot_table(
+    index=['Month of crash'],
+    columns=['Degree of crash'],
+    aggfunc='size',
+    fill_value=0
+)
+# Plotting the line plot for time of day
+plt.figure(figsize=(14, 8))
+for degree in pivot_table_time.columns:
+    plt.plot(pivot_table_time.index, pivot_table_time[degree], label=degree)
+
+plt.title('Line Plot of Crash Severity by Time of Day')
+plt.xlabel('Time of Day')
+plt.ylabel('Number of Crashes')
+plt.legend(title='Degree of Crash')
+plt.grid(True)
+plt.show()
