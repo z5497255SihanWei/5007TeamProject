@@ -1,0 +1,4 @@
+plt.figure(figsize=(12, 6))
+ax3 = sns.countplot(x='Year of crash', hue='Degree of crash', data=crash_data, palette='magma')
+ax3.set(title="different year and crash degree", xlabel="year", ylabel="number")
+plt.show()
