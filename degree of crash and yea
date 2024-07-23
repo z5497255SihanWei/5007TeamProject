@@ -1,0 +1,5 @@
+degree_counts = crash_data['Degree of crash'].value_counts()
+plt.figure(figsize=(8, 8))
+plt.pie(degree_counts, labels=degree_counts.index, autopct='%1.1f%%', colors=sns.color_palette('viridis'))
+plt.title('degree of crash and year')
+plt.show()
